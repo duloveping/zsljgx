@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>中山市蓝晶光学有限公司</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui-v2.5.5/css/layui.css}">
+    <style type="text/css">
+        .layui-table {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <table id="dataTable" class="layui-table" style="width: 300px;">
+            <tbody>
+            <tr>
+                <td rowspan="3" style="width: 100px;">
+                    <img th:src="@{/qrcode/generateqrcode}">
+                </td>
+                <td style="width: 200px;">LHT7008</td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">3330X0663</td>
+            </tr>
+            <tr>
+                <td style="width: 200px;">20190424A</td>
+            </tr>
+            </tbody>
+        </table>
+        <button id="printButton" type="button" class="layui-btn">打印</button>
+    </div>
+</div>
+<script language="javascript" type="text/javascript" th:src="@{/static/layui-v2.5.5/layui.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/common/jquery/jquery-1.11.3.min.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/common/jquery-migrate-1.2.1.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/common/jquery.jqprint-0.3.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/templates/index/single.js}"></script>
+</body>
+</html>

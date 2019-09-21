@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>中山市蓝晶光学有限公司 - 二维码生成系统 - 首页</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui-v2.5.5/css/layui.css}">
+</head>
+<body>
+<div class="layui-fluid">
+    <ul class="layui-nav">
+        <li class="layui-nav-item layui-this"><a th:href="@{/bill/deliver-goods-bill/index}">首页</a></li>
+        <li class="layui-nav-item"><a th:href="@{/bill/deliver-goods-bill/single-edit}">单个物品录入</a></li>
+        <li class="layui-nav-item"><a th:href="@{/bill/deliver-goods-bill/multi-edit}">多个物品录入</a></li>
+    </ul>
+    <div class="layui-card">
+        <div class="layui-card-header">查询条件</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">供应商编码：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="providerCode" name="providerCode" value="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">供应商名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="providerName" name="providerName" value="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">物料编码：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="materielCode" name="materielCode" value="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">物料名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="materielName" name="materielName" value="" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">批次号：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="batchCode" name="batchCode" value="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">生产日期从：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="startProduceDate" name="startProduceDate" value="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">生产日期到：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="endProduceDate" name="endProduceDate" value="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">生产班次：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="workShiftName" name="workShiftName" value="" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button id="searchButton" type="button" class="layui-btn" data-type="reload">搜索</button>
+                    <button id="printButton" type="button" class="layui-btn">打印</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-card">
+        <div class="layui-card-header">管理列表</div>
+        <div class="layui-card-body">
+            <table class="layui-hide" id="data-table-list" lay-filter="topToolbar"></table>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript" th:src="@{/static/layui-v2.5.5/layui.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/common/moment.min.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/templates/common/base.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/templates/bill/deliver-goods-bill/index.js}"></script>
+<script type="text/html" id="topToolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="print">打印</button>
+        <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
+    </div>
+</script>
+<script type="text/html" id="toolbar">
+    <i class="layui-icon layui-icon-read" title="查看" lay-event="detail"></i>
+    <i class="layui-icon layui-icon-edit" title="编辑" lay-event="edit" ></i>
+    <i class="layui-icon layui-icon-delete" title="删除" lay-event="del"></i>
+    <i class="layui-icon layui-icon-print" title="打印" lay-event="print"></i>
+</script>
+</body>
+</html>

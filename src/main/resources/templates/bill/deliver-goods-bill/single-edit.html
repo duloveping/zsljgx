@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>中山市蓝晶光学有限公司 - 单个物品录入</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui-v2.5.5/css/layui.css}">
+    <style type="text/css">
+        .layui-form-label {
+            width: 100px;
+        }
+        .layui-input-block {
+            margin-left: 130px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid">
+    <ul class="layui-nav">
+        <li class="layui-nav-item"><a th:href="@{/bill/deliver-goods-bill/index}">首页</a></li>
+        <li class="layui-nav-item layui-this"><a th:href="@{/bill/deliver-goods-bill/single-edit}">单个物品录入</a></li>
+        <li class="layui-nav-item"><a th:href="@{/bill/deliver-goods-bill/multi-edit}">多个物品录入</a></li>
+    </ul>
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <form name="singleForm" class="layui-form" method="post" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>供应商代号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="providerCode" th:value="${so.providerCode}" lay-verify="required" autocomplete="off" placeholder="请输入供应商代号" class="layui-input" maxlength="50">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>供应商名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="providerName" th:value="${so.providerName}" lay-verify="required" autocomplete="off" placeholder="请输入供应商名称" class="layui-input" maxlength="100">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>物料编码：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="materielCode" th:value="${so.materielCode}" lay-verify="required" autocomplete="off" placeholder="请输入物料编码" class="layui-input" maxlength="50">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>物料名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="materielName" th:value="${so.materielName}" lay-verify="required" autocomplete="off" placeholder="请输入物料名称" class="layui-input" maxlength="100">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>批次号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="batchCode" th:value="${so.batchCode}" lay-verify="required" autocomplete="off" placeholder="请输入批次号" class="layui-input" maxlength="50">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>生产日期：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="produceDate" name="produceDate" th:value="${#dates.format(so.produceDate, 'yyyy-MM-dd')}" lay-verify="required" autocomplete="off" placeholder="请输入生产日期" class="layui-input" readonly="readonly" maxlength="10">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>生产班次：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="workShiftName" th:value="${so.workShiftName}" name="workShiftName" lay-verify="required" autocomplete="off" placeholder="请输入生产班次" class="layui-input" maxlength="50">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input name="id" type="hidden" th:value="${so.id}">
+                        <button id="saveButton" type="submit" class="layui-btn" lay-submit="" lay-filter="singleSubmitForm">保存</button>
+                        <button type="button" class="layui-btn">预览</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript" th:src="@{/static/layui-v2.5.5/layui.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/templates/common/base.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/templates/bill/deliver-goods-bill/single-edit.js}"></script>
+</body>
+</html>
