@@ -20,6 +20,8 @@ public class DeliverGoodsBill extends EntitySupport {
     private String materielCode;
     /** 物料名称 */
     private String materielName;
+    /** 规格型号 */
+    private String materielSpec;
     /** 产品编码 */
     private String productCode;
     /** 产品名称 */
@@ -84,6 +86,14 @@ public class DeliverGoodsBill extends EntitySupport {
 
     public void setMaterielName(String materielName) {
         this.materielName = materielName;
+    }
+
+    public String getMaterielSpec() {
+        return materielSpec;
+    }
+
+    public void setMaterielSpec(String materielSpec) {
+        this.materielSpec = materielSpec;
     }
 
     public String getProductCode() {

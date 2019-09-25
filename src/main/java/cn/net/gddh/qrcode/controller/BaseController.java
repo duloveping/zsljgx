@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 public class BaseController {
-    @GetMapping("error")
+    @GetMapping("/error")
     public ModelAndView handleError(HttpServletRequest request){
         // 获取statusCode:401,404,500
         Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");

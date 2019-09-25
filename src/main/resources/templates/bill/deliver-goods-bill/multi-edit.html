@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>中山市蓝晶光学有限公司 - 多个物品录入</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui-v2.5.5/css/layui.css}">
+</head>
+<body>
+<div class="layui-fluid">
+    <ul class="layui-nav">
+        <li class="layui-nav-item"><a th:href="@{/bill/deliver-goods-bill/index}">首页</a></li>
+        <li class="layui-nav-item"><a th:href="@{/bill/deliver-goods-bill/single-edit}">单个物品录入</a></li>
+        <li class="layui-nav-item layui-this"><a th:href="@{/bill/deliver-goods-bill/multi-edit}">多个物品录入</a></li>
+    </ul>
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <form name="multiForm" class="layui-form">
+                <table class="layui-table">
+                    <colgroup>
+                        <col>
+                        <col width="200">
+                        <col width="300">
+                        <col width="200">
+                        <col width="200">
+                        <col width="200">
+                        <col width="200">
+                        <col width="80">
+                        <col width="80">
+                        <col width="80">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>供应商编码</th>
+                        <th>供应商名称</th>
+                        <th>料号</th>
+                        <th>品名</th>
+                        <th>规格型号</th>
+                        <th>批次号</th>
+                        <th>生产日期</th>
+                        <th>班次</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="dataListTable">
+                    <tr>
+                        <td><input type="text" name="multiProviderCode" value="" lay-verify="required" placeholder="请输入供应商编码" class="layui-input"></td>
+                        <td><input type="text" name="multiProviderName" value="" lay-verify="required" placeholder="请输入供应商名称" class="layui-input"></td>
+                        <td><input type="text" name="multiMaterielCode" value="" lay-verify="required" placeholder="请输入料号" class="layui-input"></td>
+                        <td><input type="text" name="multiMaterielName" value="" lay-verify="required" placeholder="请输入品名" class="layui-input"></td>
+                        <td><input type="text" name="multiMaterielSpec" value="" placeholder="" class="layui-input"></td>
+                        <td><input type="text" name="multiBatchCode" value="" lay-verify="required" placeholder="请输入批次号" class="layui-input"></td>
+                        <td><input type="text" id="multiProduceDate0" name="multiProduceDate" value="" lay-verify="required" placeholder="请输入生产日期" class="layui-input"></td>
+                        <td><input type="text" name="multiWorkShiftName" value="" placeholder="" class="layui-input"></td>
+                        <td>
+                            <i class="layui-icon layui-icon-add-1" lay-event="add"></i>
+                            <i class="layui-icon layui-icon-delete" lay-event="delete"></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="layui-footer">
+                    <button id="saveButton" type="submit" class="layui-btn" lay-submit lay-filter="multiSubmitForm">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script language="javascript" type="text/javascript" th:src="@{/static/layui-v2.5.5/layui.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/templates/common/base.js}"></script>
+<script language="javascript" type="text/javascript" th:src="@{/static/templates/bill/deliver-goods-bill/multi-edit.js}"></script>
+<script type="text/html" id="dataRowTpl">
+    {{# layui.each(d.list, function(index, item){ }}
+    <tr>
+        <td><input type="text" name="multiProviderCode" value="{{ item.providerCode }}" lay-verify="required" placeholder="请输入供应商编码" class="layui-input"></td>
+        <td><input type="text" name="multiProviderName" value="{{ item.providerName }}" lay-verify="required" placeholder="请输入供应商名称" class="layui-input"></td>
+        <td><input type="text" name="multiMaterielCode" value="{{ item.materielCode }}" lay-verify="required" placeholder="请输入料号" class="layui-input"></td>
+        <td><input type="text" name="multiMaterielName" value="{{ item.materielSpec }}" lay-verify="required" placeholder="请输入品名" class="layui-input"></td>
+        <td><input type="text" name="multiMaterielSpec" value="{{ item.materielCode }}" lay-verify="required" placeholder="" class="layui-input"></td>
+        <td><input type="text" name="multiBatchCode" value="{{ item.batchCode }}" lay-verify="required" placeholder="请输入批次号" class="layui-input"></td>
+        <td><input type="text" id="multiProduceDate{{ rowIndex }}" name="multiProduceDate" value="{{ item.produceDate }}" lay-verify="required" placeholder="请输入生产日期" class="layui-input"></td>
+        <td><input type="text" name="multiWorkShiftName" value="{{ item.workShiftName }}" lay-verify="required" placeholder="" class="layui-input"></td>
+        <td>
+            <i class="layui-icon layui-icon-add-1" lay-event="add"></i>
+            <i class="layui-icon layui-icon-delete" lay-event="delete"></i>
+        </td>
+    </tr>
+    {{#  }); }}
+</script>
+</body>
+</html>

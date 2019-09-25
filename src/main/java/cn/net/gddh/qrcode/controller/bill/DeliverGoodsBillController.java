@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,6 +71,7 @@ public class DeliverGoodsBillController extends BaseController {
         po.setProductName(StringUtils.trimToNull(so.getProductName()));
         po.setMaterielCode(StringUtils.trimToNull(so.getMaterielCode()));
         po.setMaterielName(StringUtils.trimToNull(so.getMaterielName()));
+        po.setMaterielSpec(StringUtils.trimToNull(so.getMaterielSpec()));
         po.setBatchCode(StringUtils.trimToNull(so.getBatchCode()));
         po.setProduceDate(so.getProduceDate());
         po.setWorkShiftCode(StringUtils.trimToNull(so.getWorkShiftCode()));
@@ -79,14 +81,8 @@ public class DeliverGoodsBillController extends BaseController {
         } else {
             deliverGoodsBillService.insert(po);
         }
-
-        PageInfo<DeliverGoodsBill> pageInfo = deliverGoodsBillService.findPage(so);
-        List<DeliverGoodsBill> datas = pageInfo.getList();
-
         JSONObject json = resultSuccess();
-        json.put("datas", datas);
-        json.put("total", pageInfo.getTotal());
-        json.put("pages", pageInfo.getPages());
+        json.put("id", po.getId());
         return json;
     }
 
@@ -106,6 +102,39 @@ public class DeliverGoodsBillController extends BaseController {
         }
         mv.getModel().put("so", so);
         return mv;
+    }
+
+    @GetMapping("multi-edit")
+    public ModelAndView multiEdit() {
+        ModelAndView mv = new ModelAndView("bill/deliver-goods-bill/multi-edit");
+        return mv;
+    }
+
+    @RequestMapping("multi-save")
+    @ResponseBody
+    public JSONObject multiSave(@RequestBody DeliverGoodsBillSO billSO){
+        List<Long> ids = new ArrayList<Long>();
+        if (null != billSO.getBillList() && billSO.getBillList().size() > 0) {
+            for (DeliverGoodsBill so : billSO.getBillList()) {
+                DeliverGoodsBill po = new DeliverGoodsBill();
+                po.setProviderCode(StringUtils.trimToNull(so.getProviderCode()));
+                po.setProviderName(StringUtils.trimToNull(so.getProviderName()));
+                po.setProductCode(StringUtils.trimToNull(so.getProductCode()));
+                po.setProductName(StringUtils.trimToNull(so.getProductName()));
+                po.setMaterielCode(StringUtils.trimToNull(so.getMaterielCode()));
+                po.setMaterielName(StringUtils.trimToNull(so.getMaterielName()));
+                po.setMaterielSpec(StringUtils.trimToNull(so.getMaterielSpec()));
+                po.setBatchCode(StringUtils.trimToNull(so.getBatchCode()));
+                po.setProduceDate(so.getProduceDate());
+                po.setWorkShiftCode(StringUtils.trimToNull(so.getWorkShiftCode()));
+                po.setWorkShiftName(StringUtils.trimToNull(so.getWorkShiftName()));
+                deliverGoodsBillService.insert(po);
+                ids.add(po.getId());
+            }
+        }
+        JSONObject json = resultSuccess();
+        json.put("ids", ids);
+        return json;
     }
 
     @GetMapping("multi-print")

@@ -13,6 +13,7 @@ layui.use(['layer', 'form', 'laydate'], function(){
         po.providerName = field.providerName;
         po.materielCode = field.materielCode;
         po.materielName = field.materielName;
+        po.materielSpec = field.materielSpec;
         po.batchCode = field.batchCode;
         po.produceDate = field.produceDate;
         po.workShiftName = field.workShiftName;

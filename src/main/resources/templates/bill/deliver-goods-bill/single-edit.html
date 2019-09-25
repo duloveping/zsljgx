@@ -25,7 +25,7 @@
         <div class="layui-card-body">
             <form name="singleForm" class="layui-form" method="post" action="">
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span style="color: red;">*</span>供应商代号：</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>供应商编码：</label>
                     <div class="layui-input-block">
                         <input type="text" name="providerCode" th:value="${so.providerCode}" lay-verify="required" autocomplete="off" placeholder="请输入供应商代号" class="layui-input" maxlength="50">
                     </div>
@@ -37,15 +37,21 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span style="color: red;">*</span>物料编码：</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>料号：</label>
                     <div class="layui-input-block">
                         <input type="text" name="materielCode" th:value="${so.materielCode}" lay-verify="required" autocomplete="off" placeholder="请输入物料编码" class="layui-input" maxlength="50">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span style="color: red;">*</span>物料名称：</label>
+                    <label class="layui-form-label"><span style="color: red;">*</span>品名：</label>
                     <div class="layui-input-block">
                         <input type="text" name="materielName" th:value="${so.materielName}" lay-verify="required" autocomplete="off" placeholder="请输入物料名称" class="layui-input" maxlength="100">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">规格型号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="materielSpec" th:value="${so.materielSpec}" autocomplete="off" class="layui-input" maxlength="100">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -61,9 +67,9 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span style="color: red;">*</span>生产班次：</label>
+                    <label class="layui-form-label">生产班次：</label>
                     <div class="layui-input-block">
-                        <input type="text" id="workShiftName" th:value="${so.workShiftName}" name="workShiftName" lay-verify="required" autocomplete="off" placeholder="请输入生产班次" class="layui-input" maxlength="50">
+                        <input type="text" id="workShiftName" th:value="${so.workShiftName}" name="workShiftName" autocomplete="off" class="layui-input" maxlength="50">
                     </div>
                 </div>
                 <div class="layui-form-item">

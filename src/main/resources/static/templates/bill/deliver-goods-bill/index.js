@@ -33,13 +33,13 @@ layui.use(['element', 'laydate', 'table'], function(){
                 return d.providerName;
             }
         }, {
-            title: '物料编码',
+            title: '料号',
             width: 150,
             templet: function (d) {
                 return d.materielCode;
             }
         }, {
-            title: '物料编码',
+            title: '品名',
             templet: function (d) {
                 return d.materielName;
             }
@@ -80,53 +80,8 @@ layui.use(['element', 'laydate', 'table'], function(){
 
        if (ids.length > 0) {
            if (obj.event == 'print') {
-               $.ajax({
-                   type: "post",
-                   url: "/bill/deliver-goods-bill/single-save",
-                   cache: false,
-                   data: JSON.stringify(po),
-                   dataType: "json",
-                   contentType : 'application/json;charset=utf-8',
-                   success: function (res) {
-                       $("#saveButton").prop("disabled", false);
-                       layer.close(indexLoad);
-                       layer.alert(res.info);
-                       if (res.status) {
-                           document.location.href = '/bill/deliver-goods-bill/index?rnd=' + Math.random();
-                       }
-                   },
-                   error: function (XmlHttpRequest, textStatus, errorThrown) {
-                       $("#saveButton").prop("disabled", false);
-                       layer.close(indexLoad);
-                       layer.alert('数据保存失败！' + XmlHttpRequest.status);
-                   }
-               });
+               document.location.href = "/bill/deliver-goods-bill/multi-print?ids=" + ids.join(",");
            } else if (obj.event == 'delete') {
-               layer.confirm('您确认要删除吗？', {icon: 3, title:'提示'}, function(index){
-                   var indexLoad = layer.load();
-
-                   var po = {ids: ids};
-
-                   $.ajax({
-                       type: "get",
-                       url: "/bill/deliver-goods-bill/multi-delete?ids=" + ids.join(","),
-                       cache: false,
-                       dataType: "json",
-                       contentType : 'application/json;charset=utf-8',
-                       success: function (res) {
-                           layer.close(indexLoad);
-                           layer.alert(res.info);
-                           if (res.status) {
-                               document.location.href = '/bill/deliver-goods-bill/index?rnd=' + Math.random();
-                           }
-                       },
-                       error: function (XmlHttpRequest, textStatus, errorThrown) {
-                           layer.close(indexLoad);
-                           layer.alert('数据保存失败！' + XmlHttpRequest.status);
-                       }
-                   });
-                   layer.close(index);
-               });
            }
        } else {
            layer.alert("请选择要操作的数据");

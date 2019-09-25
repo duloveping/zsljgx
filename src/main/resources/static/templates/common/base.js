@@ -6,8 +6,9 @@ DeliverGoodsBill.prototype = {
     providerName: "",
     materielCode: "",
     materielName: "",
+    materielSpec: "",
     batchCode: "",
-    produceDate: new Date(),
+    produceDate: "",
     workShiftCode: "",
-    workShiftName: "",
+    workShiftName: ""
 }

@@ -12,6 +12,7 @@ create table deliver_goods_bill
     provider_name character varying(500),
     materiel_code character varying(100),
     materiel_name character varying(500),
+    materiel_spec character varying(500),
     batch_code character varying(100),
     produce_date date,
     work_shop_code character varying(100),
@@ -20,6 +21,7 @@ create table deliver_goods_bill
     work_shift_name character varying(500),
     product_code character varying(100),
     product_name character varying(500),
+    product_spec character varying(500),
     factory_code character varying(100),
     factory_name character varying(500),
     primary key (id)
@@ -34,7 +36,8 @@ comment on column deliver_goods_bill.status is '状态';
 comment on column deliver_goods_bill.flag is '标记';
 comment on column deliver_goods_bill.provider_code is '供应商编码';
 comment on column deliver_goods_bill.materiel_code is '物料编码';
-comment on column deliver_goods_bill.materiel_name is '物料名称';
+comment on column deliver_goods_bill.materiel_name is '物料名称（品名）';
+comment on column deliver_goods_bill.materiel_spec is '物料规格';
 comment on column deliver_goods_bill.batch_code is '批次号';
 comment on column deliver_goods_bill.produce_date is '生产日期';
 comment on column deliver_goods_bill.work_shop_code is '车间编码';
@@ -43,5 +46,6 @@ comment on column deliver_goods_bill.work_shift_code is '班次编码';
 comment on column deliver_goods_bill.work_shift_name is '班次名称';
 comment on column deliver_goods_bill.product_code is '产品编码';
 comment on column deliver_goods_bill.product_name is '产品名称';
+comment on column deliver_goods_bill.product_spec is '产品规格';
 comment on column deliver_goods_bill.factory_code is '工厂编码';
 comment on column deliver_goods_bill.factory_name is '工厂名称';

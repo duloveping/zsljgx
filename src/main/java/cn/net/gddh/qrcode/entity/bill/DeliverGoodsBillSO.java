@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 送货单
@@ -20,6 +21,8 @@ public class DeliverGoodsBillSO extends SOSupport {
     private String materielCode;
     /** 物料名称 */
     private String materielName;
+    /** 规格型号 */
+    private String materielSpec;
     /** 产品编码 */
     private String productCode;
     /** 产品名称 */
@@ -40,7 +43,11 @@ public class DeliverGoodsBillSO extends SOSupport {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date produceDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startProduceDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date endProduceDate;
     /** 生产数量 */
     private Integer produceAmount;
@@ -48,12 +55,17 @@ public class DeliverGoodsBillSO extends SOSupport {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date deliverDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date startDeliverDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date endDeliverDate;
     /** 发货数量 */
     private Integer deliverAmount;
     /** 批号号 */
     private String batchCode;
+    private List<DeliverGoodsBill> billList;
 
     public DeliverGoodsBillSO() {
     }
@@ -88,6 +100,14 @@ public class DeliverGoodsBillSO extends SOSupport {
 
     public void setMaterielName(String materielName) {
         this.materielName = materielName;
+    }
+
+    public String getMaterielSpec() {
+        return materielSpec;
+    }
+
+    public void setMaterielSpec(String materielSpec) {
+        this.materielSpec = materielSpec;
     }
 
     public String getProductCode() {
@@ -162,6 +182,22 @@ public class DeliverGoodsBillSO extends SOSupport {
         this.produceDate = produceDate;
     }
 
+    public Date getStartProduceDate() {
+        return startProduceDate;
+    }
+
+    public void setStartProduceDate(Date startProduceDate) {
+        this.startProduceDate = startProduceDate;
+    }
+
+    public Date getEndProduceDate() {
+        return endProduceDate;
+    }
+
+    public void setEndProduceDate(Date endProduceDate) {
+        this.endProduceDate = endProduceDate;
+    }
+
     public Integer getProduceAmount() {
         return produceAmount;
     }
@@ -176,6 +212,22 @@ public class DeliverGoodsBillSO extends SOSupport {
 
     public void setDeliverDate(Date deliverDate) {
         this.deliverDate = deliverDate;
+    }
+
+    public Date getStartDeliverDate() {
+        return startDeliverDate;
+    }
+
+    public void setStartDeliverDate(Date startDeliverDate) {
+        this.startDeliverDate = startDeliverDate;
+    }
+
+    public Date getEndDeliverDate() {
+        return endDeliverDate;
+    }
+
+    public void setEndDeliverDate(Date endDeliverDate) {
+        this.endDeliverDate = endDeliverDate;
     }
 
     public Integer getDeliverAmount() {
@@ -194,35 +246,11 @@ public class DeliverGoodsBillSO extends SOSupport {
         this.batchCode = batchCode;
     }
 
-    public Date getStartProduceDate() {
-        return startProduceDate;
+    public List<DeliverGoodsBill> getBillList() {
+        return billList;
     }
 
-    public void setStartProduceDate(Date startProduceDate) {
-        this.startProduceDate = startProduceDate;
-    }
-
-    public Date getEndProduceDate() {
-        return endProduceDate;
-    }
-
-    public void setEndProduceDate(Date endProduceDate) {
-        this.endProduceDate = endProduceDate;
-    }
-
-    public Date getStartDeliverDate() {
-        return startDeliverDate;
-    }
-
-    public void setStartDeliverDate(Date startDeliverDate) {
-        this.startDeliverDate = startDeliverDate;
-    }
-
-    public Date getEndDeliverDate() {
-        return endDeliverDate;
-    }
-
-    public void setEndDeliverDate(Date endDeliverDate) {
-        this.endDeliverDate = endDeliverDate;
+    public void setBillList(List<DeliverGoodsBill> billList) {
+        this.billList = billList;
     }
 }
