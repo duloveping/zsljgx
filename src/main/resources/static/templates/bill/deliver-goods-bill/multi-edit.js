@@ -64,12 +64,8 @@ layui.use(['layer', 'form', 'laydate', 'laytpl'], function(){
         }
 
         var obj = {billList: datas};
-
-        console.log(obj);
-
         var indexLoad = layer.load();
         $("#saveButton").prop("disabled", true);
-
 
         $.ajax({
             type: "post",
@@ -81,10 +77,10 @@ layui.use(['layer', 'form', 'laydate', 'laytpl'], function(){
             success: function (res) {
                 $("#saveButton").prop("disabled", false);
                 layer.close(indexLoad);
-                layer.alert(res.info);
                 if (res.status) {
+                    document.getElementById("multiForm").reset();
                     var ids = res.ids;
-                    document.location.href = "/bill/deliver-goods-bill/multi-print?ids=" + ids.join(",");
+                    window.open("/bill/deliver-goods-bill/multi-print?ids=" + ids.join(","));
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {

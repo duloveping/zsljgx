@@ -32,9 +32,23 @@
     <select id="list" resultType="cn.net.gddh.qrcode.entity.bill.DeliverGoodsBill"
             parameterType="cn.net.gddh.qrcode.entity.bill.DeliverGoodsBillSO">
         select <include refid="columns"/> from deliver_goods_bill where status = true and flag = true
+        <if test="null != providerCode and '' != providerCode"> and provider_code = #{providerCode} </if>
+        <if test="null != providerName and '' != providerName">
+            <bind name="providerNameLike" value=" '%' + providerName + '%' "/>
+            and provider_name = #{providerNameLike}
+        </if>
+        <if test="null != materielCode and '' != materielCode"> and materiel_code = #{materielCode} </if>
+        <if test="null != materielName and '' != materielName">
+            <bind name="materielNameLike" value=" '%' + materielName + '%' "/>
+            and materiel_name = #{materielNameLike}
+        </if>
+        <if test="null != batchCode and '' != batchCode"> and batch_code = #{batchCode} </if>
+        <if test="null != workShiftName and '' != workShiftName"> and work_shift_name = #{workShiftName} </if>
         <if test="null != ids and ids.size() > 0">
             and id in <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">#{item}</foreach>
         </if>
+        <if test="null != startProduceDate"><![CDATA[ and produce_date >= #{startProduceDate} ]]></if>
+        <if test="null != endProduceDate"><![CDATA[ and produce_date <= #{endProduceDate} ]]></if>
         order by id desc
     </select>
 

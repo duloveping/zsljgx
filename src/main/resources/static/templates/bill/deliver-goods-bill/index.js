@@ -80,8 +80,29 @@ layui.use(['element', 'laydate', 'table'], function(){
 
        if (ids.length > 0) {
            if (obj.event == 'print') {
-               document.location.href = "/bill/deliver-goods-bill/multi-print?ids=" + ids.join(",");
+               window.open("/bill/deliver-goods-bill/multi-print?ids=" + ids.join(","))
            } else if (obj.event == 'delete') {
+               layer.confirm('您确认要删除吗？', {icon: 3, title:'提示'}, function(index){
+                   var indexLoad = layer.load();
+                   $.ajax({
+                       type: "get",
+                       url: "/bill/deliver-goods-bill/multi-delete?ids=" + ids.join(","),
+                       cache: false,
+                       dataType: "json",
+                       contentType : 'application/json;charset=utf-8',
+                       success: function (res) {
+                           layer.close(indexLoad);
+                           if (res.status) {
+                               document.location.href = "/bill/deliver-goods-bill/index?rnd=" + Math.random();
+                           }
+                       },
+                       error: function (XmlHttpRequest, textStatus, errorThrown) {
+                           layer.close(indexLoad);
+                           layer.alert('数据保存失败！' + XmlHttpRequest.status);
+                       }
+                   });
+                   layer.close(index);
+               });
            }
        } else {
            layer.alert("请选择要操作的数据");

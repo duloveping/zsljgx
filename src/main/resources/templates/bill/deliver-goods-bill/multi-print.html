@@ -9,13 +9,13 @@
 <body>
 <ul style="width: 1024px; height: 100px;">
     <li style="float: left; padding: 2px;" th:each="so : ${list}">
-        <table class="layui-table" style="width: 220px;">
+        <table class="layui-table" style="width: 250px;">
             <tbody>
             <tr>
                 <td rowspan="3" style="width: 100px;">
                     <img th:src="${'/bill/deliver-goods-bill/qrcode?id=' + so.id}">
                 </td>
-                <td style="width: 120px;" th:text="${so.providerCode}"></td>
+                <td style="width: 150px;" th:text="${so.providerCode}"></td>
             </tr>
             <tr>
                 <td th:text="${so.batchCode}"></td>

@@ -23,7 +23,7 @@
     </ul>
     <div class="layui-card">
         <div class="layui-card-body">
-            <form name="singleForm" class="layui-form" method="post" action="">
+            <form id="singleForm" name="singleForm" class="layui-form" method="post" action="">
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span style="color: red;">*</span>供应商编码：</label>
                     <div class="layui-input-block">
@@ -75,8 +75,7 @@
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <input name="id" type="hidden" th:value="${so.id}">
-                        <button id="saveButton" type="submit" class="layui-btn" lay-submit="" lay-filter="singleSubmitForm">保存</button>
-                        <button type="button" class="layui-btn">预览</button>
+                        <button id="saveButton" type="submit" class="layui-btn" lay-submit="" lay-filter="singleSubmitForm">打印</button>
                     </div>
                 </div>
             </form>

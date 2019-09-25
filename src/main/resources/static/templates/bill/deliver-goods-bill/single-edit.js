@@ -32,9 +32,9 @@ layui.use(['layer', 'form', 'laydate'], function(){
             success: function (res) {
                 $("#saveButton").prop("disabled", false);
                 layer.close(indexLoad);
-                layer.alert(res.info);
                 if (res.status) {
-                    document.location.href = '/bill/deliver-goods-bill/index?rnd=' + Math.random();
+                    document.getElementById("singleForm").reset();
+                    window.open("/bill/deliver-goods-bill/multi-print?ids=" + res.id);
                 }
             },
             error: function (XmlHttpRequest, textStatus, errorThrown) {
