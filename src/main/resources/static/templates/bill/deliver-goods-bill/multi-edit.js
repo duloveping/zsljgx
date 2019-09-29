@@ -44,6 +44,8 @@ layui.use(['layer', 'form', 'laydate', 'laytpl'], function(){
         var multiMaterielCodes = $("input[name=multiMaterielCode]");
         var multiMaterielNames = $("input[name=multiMaterielName]");
         var multiMaterielSpecs = $("input[name=multiMaterielSpec]");
+        var multiAmounts = $("input[name=multiAmount]");
+        var multiUnits = $("input[name=multiUnit]");
         var multiBatchCodes = $("input[name=multiBatchCode]");
         var multiProduceDates = $("input[name=multiProduceDate]");
         var multiWorkShiftNames = $("input[name=multiWorkShiftName]");
@@ -56,6 +58,8 @@ layui.use(['layer', 'form', 'laydate', 'laytpl'], function(){
                 po.materielCode = $.trim(multiMaterielCodes[index].value);
                 po.materielName = $.trim(multiMaterielNames[index].value);
                 po.materielSpec = $.trim(multiMaterielSpecs[index].value);
+                po.amount = $.trim(multiAmounts[index].value);
+                po.unit = $.trim(multiUnits[index].value);
                 po.batchCode = $.trim(multiBatchCodes[index].value);
                 po.produceDate = $.trim(multiProduceDates[index].value);
                 po.workShiftName = $.trim(multiWorkShiftNames[index].value);

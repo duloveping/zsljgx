@@ -72,10 +72,13 @@ public class DeliverGoodsBillController extends BaseController {
         po.setMaterielCode(StringUtils.trimToNull(so.getMaterielCode()));
         po.setMaterielName(StringUtils.trimToNull(so.getMaterielName()));
         po.setMaterielSpec(StringUtils.trimToNull(so.getMaterielSpec()));
+        po.setAmount(StringUtils.trimToNull(so.getAmount()));
+        po.setUnit(StringUtils.trimToNull(so.getUnit()));
         po.setBatchCode(StringUtils.trimToNull(so.getBatchCode()));
         po.setProduceDate(so.getProduceDate());
         po.setWorkShiftCode(StringUtils.trimToNull(so.getWorkShiftCode()));
         po.setWorkShiftName(StringUtils.trimToNull(so.getWorkShiftName()));
+        po.setCaption(StringUtils.trimToNull(so.getCaption()));
         if (null != so.getId()) {
             deliverGoodsBillService.update(po);
         } else {
@@ -128,6 +131,9 @@ public class DeliverGoodsBillController extends BaseController {
                 po.setProduceDate(so.getProduceDate());
                 po.setWorkShiftCode(StringUtils.trimToNull(so.getWorkShiftCode()));
                 po.setWorkShiftName(StringUtils.trimToNull(so.getWorkShiftName()));
+                po.setUnit(StringUtils.trimToNull(so.getUnit()));
+                po.setAmount(StringUtils.trimToNull(so.getAmount()));
+                po.setCaption(StringUtils.trimToNull(so.getCaption()));
                 deliverGoodsBillService.insert(po);
                 ids.add(po.getId());
             }
@@ -153,12 +159,32 @@ public class DeliverGoodsBillController extends BaseController {
     public void qrcode(@RequestParam Long id, HttpServletResponse response) {
         DeliverGoodsBill so = deliverGoodsBillService.getById(id);
         StringBuilder sb = new StringBuilder();
-        sb.append(so.getProviderName());
-        sb.append(DateFormatUtils.format(so.getProduceDate(), "yyyy年M月d日"));
-        sb.append(so.getWorkShiftName() + "班的，");
-        sb.append("批次号为" + so.getBatchCode());
-        sb.append("的" + so.getMaterielName());
-
+        sb.append(StringUtils.trimToEmpty(so.getProviderName()));
+        if (null != so.getProduceDate()) {
+            sb.append(DateFormatUtils.format(so.getProduceDate(), "yyyy年M月d日"));
+        }
+        if (StringUtils.isNotBlank(so.getWorkShiftName())) {
+            sb.append(StringUtils.trimToEmpty(so.getWorkShiftName()) + "班");
+        }
+        sb.append("生产的");
+        if (StringUtils.isNotBlank(so.getMaterielCode())) {
+            sb.append("料号为：" + StringUtils.trimToEmpty(so.getMaterielCode()));
+        }
+        if (StringUtils.isNotBlank(so.getBatchCode())) {
+            sb.append("，批次号为：" + StringUtils.trimToEmpty(so.getBatchCode()));
+        }
+        if (StringUtils.isNotBlank(so.getMaterielName())) {
+            sb.append("的" + StringUtils.trimToEmpty(so.getMaterielName()));
+        }
+        if (StringUtils.isNotBlank(so.getMaterielSpec())) {
+            sb.append("，规格型号：" + StringUtils.trimToEmpty(so.getMaterielSpec()));
+        }
+        if (StringUtils.isNotBlank(so.getAmount())) {
+            sb.append("，数量为：" + StringUtils.trimToEmpty(so.getAmount()));
+            if (StringUtils.isNotBlank(so.getUnit())) {
+                sb.append(StringUtils.trimToEmpty(so.getUnit()));
+            }
+        }
         try {
             // 生成二维码
             BitMatrix qRcodeImg = QRCodeUtils.generateQRCodeStream(sb.toString(), response);

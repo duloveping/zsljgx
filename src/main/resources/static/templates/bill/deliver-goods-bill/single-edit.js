@@ -9,11 +9,14 @@ layui.use(['layer', 'form', 'laydate'], function(){
     form.on('submit(singleSubmitForm)', function(data){
         var field = data.field;
         var po = new DeliverGoodsBill();
+        po.id = field.id;
         po.providerCode = field.providerCode;
         po.providerName = field.providerName;
         po.materielCode = field.materielCode;
         po.materielName = field.materielName;
         po.materielSpec = field.materielSpec;
+        po.amount = field.amount;
+        po.unit = field.unit;
         po.batchCode = field.batchCode;
         po.produceDate = field.produceDate;
         po.workShiftName = field.workShiftName;

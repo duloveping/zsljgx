@@ -4,16 +4,17 @@
     <insert id="insert" parameterType="cn.net.gddh.qrcode.entity.bill.DeliverGoodsBill"
             useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into deliver_goods_bill (creator_id, create_time, editor_id, edit_time, status, flag,
-        provider_code, provider_name, materiel_code, materiel_name, materiel_spec, batch_code, produce_date, work_shop_code,
+        provider_code, provider_name, materiel_code, materiel_name, materiel_spec, amount, unit, batch_code, produce_date, work_shop_code,
         work_shop_name, work_shift_code, work_shift_name, product_code, product_name, factory_code, factory_name)
         values (#{creatorId}, #{createTime}, #{editorId}, #{editTime}, #{status}, #{flag},
-        #{providerCode}, #{providerName}, #{materielCode}, #{materielName}, #{materielSpec}, #{batchCode}, #{produceDate}, #{workShopCode},
+        #{providerCode}, #{providerName}, #{materielCode}, #{materielName}, #{materielSpec}, #{amount}, #{unit}, #{batchCode}, #{produceDate}, #{workShopCode},
         #{workShopName}, #{workShiftCode}, #{workShiftName}, #{productCode}, #{productName}, #{factoryCode}, #{factoryName})
     </insert>
 
     <update id="update" parameterType="cn.net.gddh.qrcode.entity.bill.DeliverGoodsBill">
         update deliver_goods_bill set editor_id = #{editorId}, edit_time = #{editTime},
-        provider_code = #{providerCode}, provider_name = #{providerName}, materiel_code = #{materielCode}, materiel_spec = #{materielSpec}
+        provider_code = #{providerCode}, provider_name = #{providerName}, materiel_code = #{materielCode},
+        materiel_spec = #{materielSpec}, amount = #{amount}, unit = #{unit},
         materiel_name = #{materielName}, batch_code = #{batchCode}, produce_date = #{produceDate},
         work_shop_code = #{workShopCode}, work_shop_name = #{workShopName}, work_shift_code = #{workShiftCode},
         work_shift_name = #{workShiftName}, product_code = #{productCode}, product_name = #{productName},
@@ -25,7 +26,7 @@
     </update>
 
     <sql id="columns">
-        id, provider_code, provider_name, materiel_code, materiel_name, materiel_spec, batch_code, produce_date, work_shop_code,
+        id, provider_code, provider_name, materiel_code, materiel_name, materiel_spec, amount, unit, batch_code, produce_date, work_shop_code,
         work_shop_name, work_shift_code, work_shift_name, product_code, product_name, factory_code, factory_name
     </sql>
 

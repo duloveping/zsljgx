@@ -7,15 +7,15 @@
     <link rel="stylesheet" type="text/css" th:href="@{/static/layui-v2.5.5/css/layui.css}">
 </head>
 <body>
-<ul style="width: 1024px; height: 100px;">
-    <li style="float: left; padding: 2px;" th:each="so : ${list}">
-        <table class="layui-table" style="width: 250px;">
+<ul style="width: 1024px; height: 100px;" th:each="so : ${list}">
+    <li style="float: left; padding: 20px;" th:each="rowNum:${#numbers.sequence(0,23,1)}">
+        <table class="layui-table" style="width: 300px;">
             <tbody>
             <tr>
                 <td rowspan="3" style="width: 100px;">
                     <img th:src="${'/bill/deliver-goods-bill/qrcode?id=' + so.id}">
                 </td>
-                <td style="width: 150px;" th:text="${so.providerCode}"></td>
+                <td style="width: 300px;" th:text="${so.providerCode}"></td>
             </tr>
             <tr>
                 <td th:text="${so.batchCode}"></td>

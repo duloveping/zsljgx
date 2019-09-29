@@ -23,6 +23,10 @@ public class DeliverGoodsBillSO extends SOSupport {
     private String materielName;
     /** 规格型号 */
     private String materielSpec;
+    /** 数量 */
+    private String amount;
+    /** 单位 */
+    private String unit;
     /** 产品编码 */
     private String productCode;
     /** 产品名称 */
@@ -65,6 +69,7 @@ public class DeliverGoodsBillSO extends SOSupport {
     private Integer deliverAmount;
     /** 批号号 */
     private String batchCode;
+    private String caption;
     private List<DeliverGoodsBill> billList;
 
     public DeliverGoodsBillSO() {
@@ -108,6 +113,22 @@ public class DeliverGoodsBillSO extends SOSupport {
 
     public void setMaterielSpec(String materielSpec) {
         this.materielSpec = materielSpec;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getProductCode() {
@@ -252,5 +273,13 @@ public class DeliverGoodsBillSO extends SOSupport {
 
     public void setBillList(List<DeliverGoodsBill> billList) {
         this.billList = billList;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 }

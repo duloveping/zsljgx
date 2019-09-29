@@ -61,6 +61,18 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">数量：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="amount" th:value="${so.amount}" name="amount" autocomplete="off" class="layui-input" maxlength="50">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">单位：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="unit" th:value="${so.unit}" name="unit" autocomplete="off" class="layui-input" maxlength="30">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label"><span style="color: red;">*</span>生产日期：</label>
                     <div class="layui-input-block">
                         <input type="text" id="produceDate" name="produceDate" th:value="${#dates.format(so.produceDate, 'yyyy-MM-dd')}" lay-verify="required" autocomplete="off" placeholder="请输入生产日期" class="layui-input" readonly="readonly" maxlength="10">
@@ -72,6 +84,7 @@
                         <input type="text" id="workShiftName" th:value="${so.workShiftName}" name="workShiftName" autocomplete="off" class="layui-input" maxlength="50">
                     </div>
                 </div>
+
                 <div class="layui-form-item">
                     <div class="layui-input-block">
                         <input name="id" type="hidden" th:value="${so.id}">

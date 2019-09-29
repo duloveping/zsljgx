@@ -22,6 +22,10 @@ public class DeliverGoodsBill extends EntitySupport {
     private String materielName;
     /** 规格型号 */
     private String materielSpec;
+    /** 数量 */
+    private String amount;
+    /** 单位 */
+    private String unit;
     /** 产品编码 */
     private String productCode;
     /** 产品名称 */
@@ -52,6 +56,8 @@ public class DeliverGoodsBill extends EntitySupport {
     private Integer deliverAmount;
     /** 批号号 */
     private String batchCode;
+    /** 备注 */
+    private String caption;
 
     public DeliverGoodsBill() {
     }
@@ -94,6 +100,22 @@ public class DeliverGoodsBill extends EntitySupport {
 
     public void setMaterielSpec(String materielSpec) {
         this.materielSpec = materielSpec;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getProductCode() {
@@ -194,6 +216,14 @@ public class DeliverGoodsBill extends EntitySupport {
 
     public String getBatchCode() {
         return batchCode;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
     public void setBatchCode(String batchCode) {
